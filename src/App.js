@@ -27,11 +27,14 @@ const App = () => {
     if (state.lastButton === "=") {
       newInput = state.result
     }
-    if (newInput.includes("--")) {
-      newInput = newInput.replace("--", "+")
-    }
     if (regex.test(value) && regex.test(state.lastButton)) {
       newInput = newInput.substring(0, newInput.length - 1)
+    }
+    if (state.lastButton === "-" && isNaN(value)) {
+      newInput = newInput.substring(0, newInput.length - 1)
+      if (regex.test(newInput.charAt(newInput.length - 1))) {
+        newInput = newInput.substring(0, newInput.length - 1)
+      }
     }
     if (value === "=") {
       calculate()
@@ -49,7 +52,6 @@ const App = () => {
         }
       }
       setState({ ...state, input: newInput + value, lastButton: value, number: newNumber })
-      console.log(state)
     }
   }
 
@@ -67,7 +69,7 @@ const App = () => {
     <div className="App">
       <div className="container">
         <div id="inputDisplay">{state.input.length > 0 ? state.input : ""}</div>
-        <div id="display">{state.result.length > 0 ? state.result : "0"}</div>
+        <div id="display">{state.lastButton === "=" ? state.result : state.number.length > 0 ? state.number : state.lastButton === "" ? "0" : state.lastButton}</div>
         <button style={clearStyle} id="clear" onClick={initialize}>AC</button>
         <button style={operatorStyle} id="divide" value="/" onClick={e => handleClick(e.target.value)}>/</button>
         <button style={operatorStyle} id="multiply" value="*" onClick={e => handleClick(e.target.value)}>X</button>
