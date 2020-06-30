@@ -2,7 +2,7 @@ import React from 'react'
 import './App.css'
 import { useState } from 'react'
 
-function App() {
+const App = () => {
   const [state, setState] = useState({ input: "", result: "", lastButton: "", number: "" })
   const clearStyle = { background: "#ac3939", width: "160px" }
   const operatorStyle = { background: "#666666" }
