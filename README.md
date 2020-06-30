@@ -3,6 +3,8 @@ Simple calculator built with react.js
 
 Working demo: [https://codepen.io/joonaskinnunen/full/KKVXGVN](https://codepen.io/joonaskinnunen/full/KKVXGVN)
 
+![Screenshot](react_calculator.png)
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
